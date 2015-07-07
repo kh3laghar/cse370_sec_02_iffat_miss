@@ -1,4 +1,5 @@
 <?php require_once('Connections/user_info.php'); ?>
+<?php require_once('Connections/user_info.php'); ?>
 <?php
 if (!function_exists("GetSQLValueString")) {
 function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
@@ -37,12 +38,13 @@ if (isset($_SERVER['QUERY_STRING'])) {
 }
 
 if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
-  $insertSQL = sprintf("INSERT INTO customer_datails (name, user_id, password, email_id, re_enter_email) VALUES (%s, %s, %s, %s, %s)",
+  $insertSQL = sprintf("INSERT INTO customer_datails (name, user_id, password, email_id, re_enter_email, address_user) VALUES (%s, %s, %s, %s, %s, %s)",
                        GetSQLValueString($_POST['fullname'], "text"),
                        GetSQLValueString($_POST['user'], "text"),
                        GetSQLValueString($_POST['password'], "text"),
                        GetSQLValueString($_POST['email'], "text"),
-                       GetSQLValueString($_POST['email'], "text"));
+                       GetSQLValueString($_POST['email'], "text"),
+                       GetSQLValueString($_POST['address'], "text"));
 
   mysql_select_db($database_user_info, $user_info);
   $Result1 = mysql_query($insertSQL, $user_info) or die(mysql_error());
@@ -56,10 +58,14 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
 }
 
 mysql_select_db($database_user_info, $user_info);
-$query_User_Information = "SELECT * FROM customer_datails";
-$User_Information = mysql_query($query_User_Information, $user_info) or die(mysql_error());
-$row_User_Information = mysql_fetch_assoc($User_Information);
-$totalRows_User_Information = mysql_num_rows($User_Information);
+$query_User_information = "SELECT * FROM customer_datails";
+$User_information = mysql_query($query_User_information, $user_info) or die(mysql_error());
+$row_User_information = mysql_fetch_assoc($User_information);
+$totalRows_User_information = mysql_num_rows($User_information);
+$query_User_information = "SELECT * FROM customer_datails";
+$User_information = mysql_query($query_User_information, $user_info) or die(mysql_error());
+$row_User_information = mysql_fetch_assoc($User_information);
+$totalRows_User_information = mysql_num_rows($User_information);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -111,6 +117,11 @@ $totalRows_User_Information = mysql_num_rows($User_Information);
           <td>:</td>
           <td><input name="email" type="email" autofocus="autofocus" required="required"  /></td>
         </tr>
+        <tr>
+          <td>Address : </td>
+          <td>:</td>
+          <td><input name="address" type="text" autofocus="autofocus" required="required"  /></td>
+        </tr>
         
         
         
@@ -134,5 +145,6 @@ Already Have a account? <a href="login.php"> Login</a>
 </body>
 </html>
 <?php
-mysql_free_result($User_Information);
+mysql_free_result($User_information);
+
 ?>

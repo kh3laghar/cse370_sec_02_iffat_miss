@@ -1,0 +1,74 @@
+-- phpMyAdmin SQL Dump
+-- version 4.2.11
+-- http://www.phpmyadmin.net
+--
+-- Host: 127.0.0.1
+-- Generation Time: Jul 07, 2015 at 06:52 AM
+-- Server version: 5.6.21
+-- PHP Version: 5.6.3
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Database: `rent_a_car_cse370`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `customer_datails`
+--
+
+DROP TABLE IF EXISTS `customer_datails`;
+CREATE TABLE IF NOT EXISTS `customer_datails` (
+`cust_id` int(13) NOT NULL COMMENT 'Name of the user',
+  `name` char(20) COLLATE utf8_bin NOT NULL,
+  `user_id` varchar(25) COLLATE utf8_bin NOT NULL,
+  `password` varchar(256) COLLATE utf8_bin NOT NULL,
+  `email_id` varchar(60) COLLATE utf8_bin NOT NULL,
+  `re_enter_email` varchar(60) COLLATE utf8_bin NOT NULL,
+  `address_user` varchar(25) COLLATE utf8_bin DEFAULT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=12301020 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data for table `customer_datails`
+--
+
+INSERT INTO `customer_datails` (`cust_id`, `name`, `user_id`, `password`, `email_id`, `re_enter_email`, `address_user`) VALUES
+(12301013, 'Md Asiful Haque', 'd0ec820c65d360784cec4365a', 'cdded09fb8a03', 'kh3laghar@gmail.com', '', 'jdfk'),
+(12301014, 'Himel', 'hime_vai', 'himel_vai', 'test@himel.com', 'test@himel.com', NULL),
+(12301015, 'Shahinur Rahman Hime', 'test1', 'test1', 'test@test.com', 'test@test.com', NULL),
+(12301016, 'test2', 'test2', 'test2', 'test2@test2.com', 'test2@test2.com', NULL),
+(12301017, 'Md.Asiful Haque', 'test3', 'test3', 'test3@test.com', 'test3@test.com', NULL),
+(12301018, 'Test4', 'test4', 'TEST4', 'test4@test.com', 'test4@test.com', 'GP-CHA 161, Mohakhali, Dh'),
+(12301019, 'Tanzeeb', 'test6', 'test6', 'test6@test.com', 'test6@test.com', 'lkdfhaljsdk');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `customer_datails`
+--
+ALTER TABLE `customer_datails`
+ ADD PRIMARY KEY (`cust_id`), ADD UNIQUE KEY `user` (`user_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `customer_datails`
+--
+ALTER TABLE `customer_datails`
+MODIFY `cust_id` int(13) NOT NULL AUTO_INCREMENT COMMENT 'Name of the user',AUTO_INCREMENT=12301020;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
