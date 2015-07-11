@@ -1,0 +1,88 @@
+body  {
+	margin:0;
+	padding:0;
+}
+#Holder  {
+	width:980px;
+	height:auto;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:21px;
+	margin-bottom:21px;
+}
+#Header { 
+	height:100px;
+	background-image:url(../asset/rsz_car_logo.png);
+	background-repeat:no-repeat;
+	margin-bottom:11px;
+	background-position:center;
+}
+#NavBar {
+	height:60px;
+	background-color:rgb(13,13,13);
+	
+}
+#Content {
+	height:auto;
+	clear:both;
+	overflow:auto;
+}
+#PageHeading {
+	height:auto;
+	padding:11px;
+}
+#ContentLeft {
+	width: 280px;
+	float: left;
+	font-size: larger;
+	padding-top: 11px;
+	padding-left: 11px;
+	color: #096;
+	font-style: italic;
+	
+}
+#ContentRight {
+	width:680px;
+	float:right;
+}
+
+	
+#Footer {
+	height:100px;
+}
+h1 {
+	margin: 0;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #0F0;
+	font-weight: bold;
+	font-style: italic;
+	font-size: xx-large;
+}
+h2 {
+	margin:0;
+	font-family:Arial, Helvetica, sans-serif;
+	color:#666;
+	font-weight:lighter; 
+}
+h6 {
+	margin:0;
+	font-family:"Arial Black", Gadget, sans-serif;
+	font-weight:lighter;
+	font-size:14px;
+	color:#333;
+}
+h3 {
+	margin:0;
+	font-family:"Arial Black", Gadget, sans-serif;
+	font-weight:lighter;
+	font-size:14px;
+	color:#333;
+}
+.styleTxtField {
+	border:1px solid #666;
+	border-radius:6px;
+	width:200px;
+	height:35px;
+	font-family:Arial, Helvetica, sans-serif;
+	padding-left:6px;
+}
