@@ -1,4 +1,6 @@
-﻿<?php require_once('Connections/user_info.php'); ?>
+﻿<?php require_once('webassist/framework/framework.php'); ?>
+<?php require_once('webassist/framework/library.php'); ?>
+<?php require_once('Connections/user_info.php'); ?>
 <?php
 if (!function_exists("GetSQLValueString")) {
 function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
@@ -86,6 +88,13 @@ $Registration_RecordSet_RentACar = mysql_query($query_Registration_RecordSet_Ren
 $row_Registration_RecordSet_RentACar = mysql_fetch_assoc($Registration_RecordSet_RentACar);
 $totalRows_Registration_RecordSet_RentACar = mysql_num_rows($Registration_RecordSet_RentACar);
 ?>
+<?php
+if("" == ""){
+	$WA_custom_search_1 = new WA_Include("webassist/google/search/plugins/Register_user_custom_search.php");
+	require($WA_custom_search_1->BaseName);
+	$WA_custom_search_1->Initialize(true);
+}
+?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -102,9 +111,47 @@ $totalRows_Registration_RecordSet_RentACar = mysql_num_rows($Registration_Record
 <title>Tamplate</title>
 <script src="SpryAssets/SpryValidationTextField.js" type="text/javascript"></script>
 <script src="SpryAssets/SpryValidationConfirm.js" type="text/javascript"></script>
+<?php echo((isset($WA_custom_search_1))?$WA_custom_search_1->Head:"") ?>
+<script type="text/javascript" src="webassist/framework/javascript/ajax.js"></script>
+<script type="text/javascript">
+function framework_load_plugin_url(plugin,form,div,framework_path)  {
+  document.MM_returnValue = false;
+  framework_ajax_plugin(form,plugin,div,framework_path); 
+  return true;	
+}
+</script>
 </head>
 
-<body>
+<body><div style="width: 100%;" id="cse">
+  <div class="gsc-control-cse gsc-control-cse-en">
+    <div class="gsc-control-wrapper-cse" dir="ltr">
+      <form class="gsc-search-box" id="WAGS_custom_search_form" onsubmit="framework_load_plugin_url('webassist/google/search/plugins/Register_user_custom_search.php',document.getElementById('WAGS_custom_search_form'),'custom_search_1_wrapper','');return document.MM_returnValue" accept-charset="utf-8" action="" method="get">
+        <table cellspacing="0" cellpadding="0" class="gsc-search-box">
+          <tbody>
+            <tr>
+              <td class="gsc-input"><input type="text" autocomplete="off" size="10" class="gsc-input" name="WAGS_custom_search_search" title="search" id="WAGS_custom_search_search" dir="ltr" spellcheck="false" onfocus="this.style.backgroundImage = 'none';" onblur="if (this.value=='') this.style.backgroundImage = ' url(http://www.google.com/cse/intl/en/images/google_custom_search_watermark.gif)'; else this.style.backgroundImage = 'none';" style="outline: medium none; background: <?php echo(($WAGS_custom_search->Query)?"none":"url(http://www.google.com/cse/intl/en/images/google_custom_search_watermark.gif)"); ?> no-repeat scroll left center rgb(255, 255, 255);" value="<?php echo($WAGS_custom_search->Query); ?>"></td>
+              <td class="gsc-search-button">
+              <input type="submit" value="Search" class="gsc-search-button" title="search"></td>
+              <td class="gsc-clear-button" onclick="document.getElementById('WAGS_custom_search_search').value='';framework_load_plugin_url('webassist/google/search/plugins/Register_user_custom_search.php',document.getElementById('WAGS_custom_search_form'),'custom_search_1_wrapper','');document.getElementById('WAGS_custom_search_search').onblur();return document.MM_returnValue"><div class="gsc-clear-button" title="clear results">&nbsp;</div></td>
+            </tr>
+          </tbody>
+        </table>
+        <table cellspacing="0" cellpadding="0" class="gsc-branding">
+          <tbody>
+            <tr>
+              <td class="gsc-branding-user-defined"></td>
+              <td class="gsc-branding-text"><div class="gsc-branding-text">powered by</div></td>
+              <td class="gsc-branding-img"><img src="http://www.google.com/uds/css/small-logo.png" class="gsc-branding-img"></td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
+      <div id="custom_search_1_wrapper">
+	  <?php echo((isset($WA_custom_search_1))?$WA_custom_search_1->Body:"") ?>
+      </div>
+    </div>
+  </div>
+</div>
 <div id="Holder">
 <div id="Header"></div>
 <div id="NavBar">
@@ -133,14 +180,19 @@ $totalRows_Registration_RecordSet_RentACar = mysql_num_rows($Registration_Record
         <td><table width="376" border="0">
           <tr>
             <td width="144"><span id="FullNameFieldFirstName">
-              <label for="FName">First Name : <br>
+              <label for="FName">First Name : 
+                <input name="FName" type="text" class="styleTxtField" id="FName">
+                <br>
               </label>
-              <input name="FName" type="text" class="styleTxtField" id="FName">
-              <span class="textfieldRequiredMsg">Fist Name Missing.</span></span></td>
+              <span class="textfieldRequiredMsg">First Name Missing .</span></span></td>
+              
+              
             <td width="168"><span id="FullNameFieldLastName">
-              <label for="LName">Last Name :<br>
+              <label for="LName">Last Name :
+                <input name="LName" type="text" class="styleTxtField" id="LName">
+                <br>
               </label>
-              <input name="LName" type="text" class="styleTxtField" id="LName">
+            
               <span class="textfieldRequiredMsg">Last Name Missing .</span></span></td>
           </tr>
         </table></td>
@@ -151,7 +203,8 @@ $totalRows_Registration_RecordSet_RentACar = mysql_num_rows($Registration_Record
       <tr>
         <td><span id="sprytextfield7">User Name :<br>
           <input name="UserName" type="text" class="styleTxtField" id="UserName">
-          <span class="textfieldRequiredMsg">A value is required.</span></span></td>
+          
+        <span class="textfieldRequiredMsg">User Name Required.</span></span></td>
       </tr>
       <tr>
         <td><table border="0">
@@ -173,9 +226,9 @@ $totalRows_Registration_RecordSet_RentACar = mysql_num_rows($Registration_Record
         <td>&nbsp;</td>
       </tr>
       <tr>
-        <td><span id="UserNameField">
-          <label for="UserName"></label>
-          <span class="textfieldRequiredMsg">A value is required.</span></span>
+        <td>
+         
+          
           <table border="0">
             <tr>
               <td><span id="EmailText">
@@ -196,9 +249,9 @@ $totalRows_Registration_RecordSet_RentACar = mysql_num_rows($Registration_Record
         <td>&nbsp;</td>
       </tr>
       <tr>
-        <td><span id="sprytextfield4">Phone No :<br>
+        <td><span id="PhoneNoSpan">Phone No :<br>
           <input name="PhoneNo" type="text" class="styleTxtField" id="PhoneNo">
-          <span class="textfieldRequiredMsg">A value is required.</span></span></td>
+          <span class="textfieldRequiredMsg">Phone No Required .</span></span></td>
       </tr>
       <tr>
         <td>&nbsp;</td>
@@ -207,7 +260,7 @@ $totalRows_Registration_RecordSet_RentACar = mysql_num_rows($Registration_Record
         <td><p>Address : 
           </p>
           <p>
-            <textarea name="Address" cols="50" rows="10" autofocus required class="styleTxtField" id="Address"  ></textarea>
+            <textarea name="Address" cols="50" rows="10" class="styleTxtField" id="Address"  ></textarea>
             </p></td>
       </tr>
       <tr>
@@ -225,7 +278,7 @@ $totalRows_Registration_RecordSet_RentACar = mysql_num_rows($Registration_Record
 
 </div>
 <script type="text/javascript">
-var sprytextfield1 = new Spry.Widget.ValidationTextField("FullNameFieldFistName");
+var sprytextfield1 = new Spry.Widget.ValidationTextField("FullNameFieldFirstName");
 var sprytextfield2 = new Spry.Widget.ValidationTextField("FullNameFieldLastName");
 var spryconfirm2 = new Spry.Widget.ValidationConfirm("EmailTextConfirm", "Email");
 var sprytextfield5 = new Spry.Widget.ValidationTextField("sprytextfield5");
@@ -233,7 +286,7 @@ var sprytextfield6 = new Spry.Widget.ValidationTextField("EmailText", "email");
 var sprytextfield3 = new Spry.Widget.ValidationTextField("PasswordTest");
 var spryconfirm1 = new Spry.Widget.ValidationConfirm("PasswordTestConfim", "password");
 var sprytextfield7 = new Spry.Widget.ValidationTextField("sprytextfield7");
-var sprytextfield4 = new Spry.Widget.ValidationTextField("sprytextfield4");
+var sprytextfield4 = new Spry.Widget.ValidationTextField("PhoneNoSpan");
 </script>
 </body>
 </html>
