@@ -85,19 +85,20 @@ if (isset($_GET['accesscheck'])) {
 if (isset($_POST['UserName'])) {
   $loginUsername=$_POST['UserName'];
   $password=$_POST['password'];
-  $MM_fldUserAuthorization = "";
+  $MM_fldUserAuthorization = "UserLevel";
   $MM_redirectLoginSuccess = "Account.php";
   $MM_redirectLoginFailed = "access_denied.php";
   $MM_redirecttoReferrer = false;
   mysql_select_db($database_user_info, $user_info);
-  
-  $LoginRS__query=sprintf("SELECT user_id, password FROM customer_datails WHERE user_id=%s AND password=%s",
-    GetSQLValueString($loginUsername, "text"), GetSQLValueString($password, "text")); 
+  	
+  $LoginRS__query=sprintf("SELECT user_id, password, UserLevel FROM customer_datails WHERE user_id=%s AND password=%s",
+  GetSQLValueString($loginUsername, "text"), GetSQLValueString($password, "text")); 
    
   $LoginRS = mysql_query($LoginRS__query, $user_info) or die(mysql_error());
   $loginFoundUser = mysql_num_rows($LoginRS);
   if ($loginFoundUser) {
-     $loginStrGroup = "";
+    
+    $loginStrGroup  = mysql_result($LoginRS,0,'UserLevel');
     
 	if (PHP_VERSION >= 5.1) {session_regenerate_id(true);} else {session_regenerate_id();}
     //declare two session variables and assign them
