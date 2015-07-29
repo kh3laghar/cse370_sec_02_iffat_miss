@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_VehicleType" value="name:vehicle_id;datatype:int,name:name;datatype:string,name:Model;datatype:string,name:deposit;datatype:int,name:cost_per_mile;datatype:int,name:availbility_vechicle;datatype:int" />
+</info>
