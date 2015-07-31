@@ -102,7 +102,7 @@ $row_user = mysql_fetch_assoc($user);
 <link href="CSS/layout.css" rel="stylesheet" type="text/css" />
 <link href="CSS/Menu.css" rel="stylesheet" type="text/css" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Tamplate</title>
+<title>Admin Control Panel</title>
 </head>
 
 <body>
@@ -111,17 +111,42 @@ $row_user = mysql_fetch_assoc($user);
 <div id="NavBar">
 	<nav>
     	<ul>
-        	<li><a href="login.php">Login</a></li>
-<li><a href="Logout.php">Logout</a></li>
-            <li><a href="update.php">Manage Account</a></li>
-            <li><a href="Register_user.php">Register</a></li>
-<li><a href="Contact_us.php">Contact Us</a></li>
-      <li><a href="About_us.php">About Us </a></li></ul></nav>
+        	
+            <ul>
+            <li><a href=""> Login</a>
+            <ul>
+            <li><a href="login.php">User Login</a></li>
+            <li><a href="user_admin.php">Admin login</a></li></ul>
+            </li>
+            
+            
+            
+            <ul>
+            <li><a href="">Update</a>
+            <ul>
+            <li><a href="update.php">User Details </a></li>
+            <li><a href="UpdateDriverDetails.php">Driver Details</a></li>
+            <li><a href="UpdateVehicleDetails.php">Vehicle Details</a></li>
+            </ul>
+            </li>
+            
+            <ul>
+            <li><a href=""> Insert</a>
+            <ul>
+            <li><a href="InsertVehicleType.php">Vehicle Type</a></li>
+            <li><a href="InsertBillingDetails.php">Billing Details</a></li>
+            </ul>
+            </li>
+<li><a href="Logout.php">Logout</a></li></nav>
             </div>
            
             
 <div id="Content">
 <div id="PageHeading">
+  <h1>&nbsp;</h1>
+  <h1>&nbsp;</h1>
+  <h1>&nbsp;</h1>
+  <p>&nbsp;</p>
   <h1><?php echo $row_user['FName']; ?>  ! welcome to Admin CP</h1>
 </div>
 <div id="ContentLeft">

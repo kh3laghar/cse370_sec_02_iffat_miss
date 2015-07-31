@@ -4,7 +4,7 @@
 if (!isset($_SESSION)) {
   session_start();
 }
-$MM_authorizedUsers = "1";
+$MM_authorizedUsers = "2";
 $MM_donotCheckaccess = "false";
 
 // *** Restrict Access To Page: Grant or deny access to this page
@@ -101,7 +101,7 @@ $totalRows_user = mysql_num_rows($user);
 <link href="CSS/layout.css" rel="stylesheet" type="text/css" />
 <link href="CSS/Menu.css" rel="stylesheet" type="text/css" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Tamplate</title>
+<title>Account</title>
 </head>
 
 <body>

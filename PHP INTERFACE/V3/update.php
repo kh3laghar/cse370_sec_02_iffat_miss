@@ -110,10 +110,10 @@ function framework_load_plugin_url(plugin,form,div,framework_path)  {
             
 <div id="Content">
 <div id="PageHeading">
-  <h1>Car Hire Dorset</h1>
+  <h1>Update Account </h1>
 </div>
 <div id="ContentLeft">
-  <h3>Welcome to Dorset Car Rental Service </h3>
+  <h3>Account Links </h3>
 </div>
 <div id="ContentRight">
   <form action="<?php echo $editFormAction; ?>" method="POST" name="UpdateForm" id="UpdateForm">
