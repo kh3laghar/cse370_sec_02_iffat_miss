@@ -113,20 +113,21 @@ $row_user = mysql_fetch_assoc($user);
     	<ul>
         	
             <ul>
-            <li><a href=""> Login</a>
-            <ul>
-            <li><a href="login.php">User Login</a></li>
-            <li><a href="user_admin.php">Admin login</a></li></ul>
-            </li>
+            <li><a href="index.php">Home</a></li></ul>
             
+           
+            <ul>
+            <li><a href="Admin_ManageUser.php">Manage User </a></li></ul>
             
             
             <ul>
             <li><a href="">Update</a>
             <ul>
             <li><a href="update.php">User Details </a></li>
-            <li><a href="UpdateDriverDetails.php">Driver Details</a></li>
             <li><a href="UpdateVehicleDetails.php">Vehicle Details</a></li>
+            <li><a href="UpdateVehicleType.php">Vehicle Type</a></li>
+            <li><a href="UpdateDriverDetails.php">Driver Details</a></li>
+            <li><a href="UpdateBillingDetails.php">Billing Details</a></li>
             </ul>
             </li>
             
@@ -134,19 +135,18 @@ $row_user = mysql_fetch_assoc($user);
             <li><a href=""> Insert</a>
             <ul>
             <li><a href="InsertVehicleType.php">Vehicle Type</a></li>
+            <li><a href="InsertVehicleDetails.php">Vehicle Details</a></li>
+            <li><a href="InsertDriverDetails.php">Driver Details</a></li>
             <li><a href="InsertBillingDetails.php">Billing Details</a></li>
             </ul>
             </li>
-<li><a href="Logout.php">Logout</a></li></nav>
+<li><a href="Logout.php">Logout</a></li>
+</nav>
             </div>
            
             
 <div id="Content">
 <div id="PageHeading">
-  <h1>&nbsp;</h1>
-  <h1>&nbsp;</h1>
-  <h1>&nbsp;</h1>
-  <p>&nbsp;</p>
   <h1><?php echo $row_user['FName']; ?>  ! welcome to Admin CP</h1>
 </div>
 <div id="ContentLeft">

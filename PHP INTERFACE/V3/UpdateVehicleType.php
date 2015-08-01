@@ -41,11 +41,10 @@ if (isset($_SERVER['QUERY_STRING'])) {
 }
 
 if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "UpdateForm")) {
-  $updateSQL = sprintf("UPDATE driver_details SET name=%s, dob=%s, email_id=%s WHERE address_driver=%s",
-                       GetSQLValueString($_POST['Update_name'], "text"),
-                       GetSQLValueString($_POST['Update_date'], "date"),
-                       GetSQLValueString($_POST['Update_Email'], "text"),
-                       GetSQLValueString($_POST['text1'], "text"));
+  $updateSQL = sprintf("UPDATE customer_datails SET password=%s, email_id=%s WHERE cust_id=%s",
+                       GetSQLValueString($_POST['PasswordUpdate'], "text"),
+                       GetSQLValueString($_POST['EMail_UPdate'], "text"),
+                       GetSQLValueString($_POST['UserIDHidded'], "int"));
 
   mysql_select_db($database_user_info, $user_info);
   $Result1 = mysql_query($updateSQL, $user_info) or die(mysql_error());
@@ -67,12 +66,6 @@ $query_user = sprintf("SELECT * FROM customer_datails WHERE user_id = %s", GetSQ
 $user = mysql_query($query_user, $user_info) or die(mysql_error());
 $row_user = mysql_fetch_assoc($user);
 $totalRows_user = mysql_num_rows($user);
-
-mysql_select_db($database_user_info, $user_info);
-$query_Driver_update = "SELECT * FROM driver_details";
-$Driver_update = mysql_query($query_Driver_update, $user_info) or die(mysql_error());
-$row_Driver_update = mysql_fetch_assoc($Driver_update);
-$totalRows_Driver_update = mysql_num_rows($Driver_update);
 ?>
 <?php
 if("" == ""){
@@ -88,11 +81,11 @@ if("" == ""){
 <link href="CSS/Menu.css" rel="stylesheet" type="text/css" />
 <link href="SpryAssets/SpryValidationTextField.css" rel="stylesheet" type="text/css">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Update Driver Details
-</title>
+<title>Tamplate</title>
 <script src="SpryAssets/SpryValidationTextField.js" type="text/javascript"></script>
 <?php echo((isset($WA_custom_search_1))?$WA_custom_search_1->Head:"") ?>
-<script type="text/javascript" src="webassist/framework/javascript/ajax.js"></script><script type="text/javascript">
+<script type="text/javascript" src="webassist/framework/javascript/ajax.js"></script>
+<script type="text/javascript">
 function framework_load_plugin_url(plugin,form,div,framework_path)  {
   document.MM_returnValue = false;
   framework_ajax_plugin(form,plugin,div,framework_path); 
@@ -107,38 +100,13 @@ function framework_load_plugin_url(plugin,form,div,framework_path)  {
 <div id="NavBar">
 	<nav>
     	<ul>
-        	
-            <ul>
-            <li><a href="index.php">Home</a></li></ul>
-            
-           
-            <ul>
-            <li><a href="Admin_ManageUser.php">Manage User </a></li></ul>
-            
-            
-            <ul>
-            <li><a href="">Update</a>
-            <ul>
-            <li><a href="update.php">User Details </a></li>
-            <li><a href="UpdateVehicleDetails.php">Vehicle Details</a></li>
-            <li><a href="UpdateVehicleType.php">Vehicle Type</a></li>
-            <li><a href="UpdateDriverDetails.php">Driver Details</a></li>
-            <li><a href="UpdateBillingDetails.php">Billing Details</a></li>
-            </ul>
-            </li>
-            
-            <ul>
-            <li><a href=""> Insert</a>
-            <ul>
-            <li><a href="InsertVehicleType.php">Vehicle Type</a></li>
-            <li><a href="InsertVehicleDetails.php">Vehicle Details</a></li>
-            <li><a href="InsertDriverDetails.php">Driver Details</a></li>
-            <li><a href="InsertBillingDetails.php">Billing Details</a></li>
-            </ul>
-            </li>
+        	<li><a href="login.php">Login</a></li>
 <li><a href="Logout.php">Logout</a></li>
-</nav>
-  </div>
+            <li><a href="ForgotPassword.php">Forgot Password</a></li>
+            <li><a href="Register_user.php">Register</a></li>
+<li><a href="Contact_us.php">Contact Us</a></li>
+      <li><a href="About_us.php">About Us </a></li></ul></nav>
+            </div>
            
             
 <div id="Content">
@@ -159,35 +127,20 @@ function framework_load_plugin_url(plugin,form,div,framework_path)  {
             </tr>
             <tr>
               <td><span id="sprytextfield1">
-                <label for="Update_name"></label>
-                Update Name : :
+                <label for="EMail_UPdate"></label>
+                Update Email :
                 <br>
-                <input name="Update_name" type="text" class="styleTxtField" id="Update_name" value="<?php echo $row_Driver_update['address_driver']; ?>">
+                <input name="EMail_UPdate" type="text" class="styleTxtField" id="EMail_UPdate" value="<?php echo $row_user['email_id']; ?>">
                 <span class="textfieldRequiredMsg">A value is required.</span></span></td>
             </tr>
             <tr>
               <td>&nbsp;</td>
             </tr>
             <tr>
-              <td><span id="sprytextfield3">Update Date :<br>
-                <input name="Update_date" type="text" class="styleTxtField" id="Update_date" value="<?php echo $row_Driver_update['dob']; ?>">
-                <span class="textfieldRequiredMsg">A value is required.</span></span></td>
-            </tr>
-            <tr>
-              <td>&nbsp;</td>
-            </tr>
-            <tr>
-              <td><span id="sprytextfield4">
-                Update Email :<br>
-                <input name="Update_Email" type="text" class="styleTxtField" id="Update_Email" value="<?php echo $row_Driver_update['email_id']; ?>">
-                <span class="textfieldRequiredMsg">A value is required.</span></span></td>
-            </tr>
-            <tr>
-              <td>&nbsp;</td>
-            </tr>
-            <tr>
-              <td><span id="sprytextfield2"> Update Address :<br>
-                <input name="text1" type="text" class="styleTxtField" id="text1" value="<?php echo $row_Driver_update['address_driver']; ?>">
+              <td><span id="sprytextfield2">
+                <label for="PasswordUpdate"></label>
+                Update Password :<br>
+                <input name="PasswordUpdate" type="password" class="styleTxtField" id="PasswordUpdate" value="<?php echo $row_user['password']; ?>">
                 <span class="textfieldRequiredMsg">A value is required.</span></span></td>
             </tr>
             <tr>
@@ -212,20 +165,14 @@ function framework_load_plugin_url(plugin,form,div,framework_path)  {
 </div>
 <script type="text/javascript">
 var sprytextfield1 = new Spry.Widget.ValidationTextField("sprytextfield1");
+var sprytextfield2 = new Spry.Widget.ValidationTextField("sprytextfield2");
 </script><div style="width: 100%;" id="cse">
   <div class="gsc-control-cse gsc-control-cse-en">
     <div class="gsc-control-wrapper-cse" dir="ltr"></div>
   </div>
 </div>
-<script type="text/javascript">
-var sprytextfield3 = new Spry.Widget.ValidationTextField("sprytextfield3");
-var sprytextfield4 = new Spry.Widget.ValidationTextField("sprytextfield4");
-var sprytextfield2 = new Spry.Widget.ValidationTextField("sprytextfield2");
-</script>
 </body>
 </html>
 <?php
 mysql_free_result($user);
-
-mysql_free_result($Driver_update);
 ?>

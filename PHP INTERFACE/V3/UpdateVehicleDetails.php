@@ -1,4 +1,5 @@
-﻿<?php require_once('webassist/framework/framework.php'); ?>
+﻿<?php @session_start(); ?>
+<?php require_once('webassist/framework/framework.php'); ?>
 <?php require_once('webassist/framework/library.php'); ?>
 <?php @session_start(); ?>
 <?php require_once('Connections/user_info.php'); ?>
@@ -99,12 +100,37 @@ function framework_load_plugin_url(plugin,form,div,framework_path)  {
 <div id="NavBar">
 	<nav>
     	<ul>
-        	<li><a href="login.php">Login</a></li>
+        	
+            <ul>
+            <li><a href="index.php">Home</a></li></ul>
+            
+           
+            <ul>
+            <li><a href="Admin_ManageUser.php">Manage User </a></li></ul>
+            
+            
+            <ul>
+            <li><a href="">Update</a>
+            <ul>
+            <li><a href="update.php">User Details </a></li>
+            <li><a href="UpdateVehicleDetails.php">Vehicle Details</a></li>
+            <li><a href="UpdateVehicleType.php">Vehicle Type</a></li>
+            <li><a href="UpdateDriverDetails.php">Driver Details</a></li>
+            <li><a href="UpdateBillingDetails.php">Billing Details</a></li>
+            </ul>
+            </li>
+            
+            <ul>
+            <li><a href=""> Insert</a>
+            <ul>
+            <li><a href="InsertVehicleType.php">Vehicle Type</a></li>
+            <li><a href="InsertVehicleDetails.php">Vehicle Details</a></li>
+            <li><a href="InsertDriverDetails.php">Driver Details</a></li>
+            <li><a href="InsertBillingDetails.php">Billing Details</a></li>
+            </ul>
+            </li>
 <li><a href="Logout.php">Logout</a></li>
-            <li><a href="ForgotPassword.php">Forgot Password</a></li>
-            <li><a href="Register_user.php">Register</a></li>
-<li><a href="Contact_us.php">Contact Us</a></li>
-      <li><a href="About_us.php">About Us </a></li></ul></nav>
+        </nav>
             </div>
            
             
@@ -167,32 +193,7 @@ var sprytextfield1 = new Spry.Widget.ValidationTextField("sprytextfield1");
 var sprytextfield2 = new Spry.Widget.ValidationTextField("sprytextfield2");
 </script><div style="width: 100%;" id="cse">
   <div class="gsc-control-cse gsc-control-cse-en">
-    <div class="gsc-control-wrapper-cse" dir="ltr">
-      <form class="gsc-search-box" id="WAGS_custom_search_form" onsubmit="framework_load_plugin_url('webassist/google/search/plugins/update_custom_search.php',document.getElementById('WAGS_custom_search_form'),'custom_search_1_wrapper','');return document.MM_returnValue" accept-charset="utf-8" action="" method="get">
-        <table cellspacing="0" cellpadding="0" class="gsc-search-box">
-          <tbody>
-            <tr>
-              <td class="gsc-input"><input type="text" autocomplete="off" size="10" class="gsc-input" name="WAGS_custom_search_search" title="search" id="WAGS_custom_search_search" dir="ltr" spellcheck="false" onfocus="this.style.backgroundImage = 'none';" onblur="if (this.value=='') this.style.backgroundImage = ' url(http://www.google.com/cse/intl/en/images/google_custom_search_watermark.gif)'; else this.style.backgroundImage = 'none';" style="outline: medium none; background: <?php echo(($WAGS_custom_search->Query)?"none":"url(http://www.google.com/cse/intl/en/images/google_custom_search_watermark.gif)"); ?> no-repeat scroll left center rgb(255, 255, 255);" value="<?php echo($WAGS_custom_search->Query); ?>"></td>
-              <td class="gsc-search-button">
-              <input type="submit" value="Search" class="gsc-search-button" title="search"></td>
-              <td class="gsc-clear-button" onclick="document.getElementById('WAGS_custom_search_search').value='';framework_load_plugin_url('webassist/google/search/plugins/update_custom_search.php',document.getElementById('WAGS_custom_search_form'),'custom_search_1_wrapper','');document.getElementById('WAGS_custom_search_search').onblur();return document.MM_returnValue"><div class="gsc-clear-button" title="clear results">&nbsp;</div></td>
-            </tr>
-          </tbody>
-        </table>
-        <table cellspacing="0" cellpadding="0" class="gsc-branding">
-          <tbody>
-            <tr>
-              <td class="gsc-branding-user-defined"></td>
-              <td class="gsc-branding-text"><div class="gsc-branding-text">powered by</div></td>
-              <td class="gsc-branding-img"><img src="http://www.google.com/uds/css/small-logo.png" class="gsc-branding-img"></td>
-            </tr>
-          </tbody>
-        </table>
-      </form>
-      <div id="custom_search_1_wrapper">
-	  <?php echo((isset($WA_custom_search_1))?$WA_custom_search_1->Body:"") ?>
-      </div>
-    </div>
+    <div class="gsc-control-wrapper-cse" dir="ltr"></div>
   </div>
 </div>
 </body>

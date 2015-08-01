@@ -31,10 +31,6 @@
             
 <div id="Content">
 <div id="PageHeading">
-  <h1>&nbsp;</h1>
-  <p>&nbsp;</p>
-  <p>&nbsp;</p>
-  <h1>&nbsp;</h1>
   <h1>Car Hire Dorset</h1>
 </div>
 <div id="ContentLeft">

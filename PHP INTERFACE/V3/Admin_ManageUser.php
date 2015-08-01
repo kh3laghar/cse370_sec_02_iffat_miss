@@ -112,19 +112,21 @@ $totalRows_user = mysql_num_rows($user);
     	<ul>
         	
             <ul>
-            <li><a href=""> Login</a>
-            <li><a href="login.php">User Login</a></li>
-            <li><a href="user_admin.php">Admin login</a></li></ul>
-            </li>
+            <li><a href="index.php">Home</a></li></ul>
             
+           
+            <ul>
+            <li><a href="Admin_ManageUser.php">Manage User </a></li></ul>
             
             
             <ul>
             <li><a href="">Update</a>
             <ul>
             <li><a href="update.php">User Details </a></li>
-            <li><a href="UpdateDriverDetails.php">Driver Details</a></li>
             <li><a href="UpdateVehicleDetails.php">Vehicle Details</a></li>
+            <li><a href="UpdateVehicleType.php">Vehicle Type</a></li>
+            <li><a href="UpdateDriverDetails.php">Driver Details</a></li>
+            <li><a href="UpdateBillingDetails.php">Billing Details</a></li>
             </ul>
             </li>
             
@@ -132,6 +134,8 @@ $totalRows_user = mysql_num_rows($user);
             <li><a href=""> Insert</a>
             <ul>
             <li><a href="InsertVehicleType.php">Vehicle Type</a></li>
+            <li><a href="InsertVehicleDetails.php">Vehicle Details</a></li>
+            <li><a href="InsertDriverDetails.php">Driver Details</a></li>
             <li><a href="InsertBillingDetails.php">Billing Details</a></li>
             </ul>
             </li>
@@ -142,6 +146,7 @@ $totalRows_user = mysql_num_rows($user);
             
 <div id="Content">
 <div id="PageHeading">
+  <h1>&nbsp;</h1>
   <h1>Wecome <?php echo $row_user['FName']; ?> <?php echo $row_user['LName']; ?> !</h1>
 </div>
 <div id="ContentLeft">

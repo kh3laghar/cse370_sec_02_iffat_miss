@@ -58,8 +58,12 @@ $BillingInsert = mysql_query($query_BillingInsert, $user_info) or die(mysql_erro
 $row_BillingInsert = mysql_fetch_assoc($BillingInsert);
 $totalRows_BillingInsert = mysql_num_rows($BillingInsert);
 
+$colname_BillingDetails = "-1";
+if (isset($_SESSION['MM_Username'])) {
+  $colname_BillingDetails = $_SESSION['MM_Username'];
+}
 mysql_select_db($database_user_info, $user_info);
-$query_BillingDetails = "SELECT * FROM billing_details";
+$query_BillingDetails = sprintf("SELECT * FROM customer_datails WHERE cust_id = %s", GetSQLValueString($colname_BillingDetails, "int"));
 $BillingDetails = mysql_query($query_BillingDetails, $user_info) or die(mysql_error());
 $row_BillingDetails = mysql_fetch_assoc($BillingDetails);
 $totalRows_BillingDetails = mysql_num_rows($BillingDetails);
@@ -91,7 +95,7 @@ if("" == ""){
 <link href="CSS/Menu.css" rel="stylesheet" type="text/css" />
 <link href="SpryAssets/SpryValidationTextField.css" rel="stylesheet" type="text/css">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Billing Details</title>
+<title>Insert Billing Details</title>
 <?php echo((isset($WA_custom_search_1))?$WA_custom_search_1->Head:"") ?><script type="text/javascript" src="webassist/framework/javascript/ajax.js"></script>
 <script src="SpryAssets/SpryValidationTextField.js" type="text/javascript"></script>
 <script type="text/javascript">
@@ -109,12 +113,36 @@ function framework_load_plugin_url(plugin,form,div,framework_path)  {
 <div id="NavBar">
 	<nav>
     	<ul>
-        	<li><a href="login.php">Login</a></li>
-<li><a href="Logout.php">Logout</a></li>
-            <li><a href="ForgotPassword.php">Forgot Password</a></li>
-            <li><a href="Register_user.php">Register</a></li>
-<li><a href="Contact_us.php">Contact Us</a></li>
-      <li><a href="About_us.php">About Us </a></li></ul></nav>
+        	
+            <ul>
+            <li><a href="index.php">Home</a></li></ul>
+            
+           
+            <ul>
+            <li><a href="Admin_ManageUser.php">Manage User </a></li></ul>
+            
+            
+            <ul>
+            <li><a href="">Update</a>
+            <ul>
+            <li><a href="update.php">User Details </a></li>
+            <li><a href="UpdateVehicleDetails.php">Vehicle Details</a></li>
+            <li><a href="UpdateVehicleType.php">Vehicle Type</a></li>
+            <li><a href="UpdateDriverDetails.php">Driver Details</a></li>
+            <li><a href="UpdateBillingDetails.php">Billing Details</a></li>
+            </ul>
+            </li>
+            
+            <ul>
+            <li><a href=""> Insert</a>
+            <ul>
+            <li><a href="InsertVehicleType.php">Vehicle Type</a></li>
+            <li><a href="InsertVehicleDetails.php">Vehicle Details</a></li>
+            <li><a href="InsertDriverDetails.php">Driver Details</a></li>
+            <li><a href="InsertBillingDetails.php">Billing Details</a></li>
+            </ul>
+            </li>
+<li><a href="Logout.php">Logout</a></li></nav>
             </div>
            
             
@@ -123,7 +151,7 @@ function framework_load_plugin_url(plugin,form,div,framework_path)  {
   <h1>Car Hire Dorset</h1>
 </div>
 <div id="ContentLeft">
-  <h3>Welcome to Dorset Car Rental Service </h3>
+  <h3>Welcome to Dorset Car Rental Service</h3>
 </div>
 <div id="ContentRight">
   <form action="<?php echo $editFormAction; ?>" method="POST" name="UpdateForm" id="UpdateForm">

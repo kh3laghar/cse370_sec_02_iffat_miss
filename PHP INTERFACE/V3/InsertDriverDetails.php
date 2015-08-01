@@ -1,4 +1,5 @@
-﻿<?php require_once('webassist/framework/framework.php'); ?>
+﻿<?php @session_start(); ?>
+<?php require_once('webassist/framework/framework.php'); ?>
 <?php require_once('webassist/framework/library.php'); ?>
 <?php @session_start(); ?>
 <?php require_once('Connections/user_info.php'); ?>
@@ -85,17 +86,17 @@ if (isset($_SERVER['QUERY_STRING'])) {
 }
 
 if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "UpdateForm")) {
-  $insertSQL = sprintf("INSERT INTO vehicle_type (name, Model, deposit, cost_per_mile, availbility_vechicle) VALUES (%s, %s, %s, %s, %s)",
-                       GetSQLValueString($_POST['VehicleName'], "text"),
-                       GetSQLValueString($_POST['Model'], "text"),
-                       GetSQLValueString($_POST['DepositMoney'], "int"),
-                       GetSQLValueString($_POST['CostPerMile'], "int"),
-                       GetSQLValueString($_POST['Avail'], "int"));
+  $insertSQL = sprintf("INSERT INTO driver_details (name, gender, dob, email_id, address_driver) VALUES (%s, %s, %s, %s, %s)",
+                       GetSQLValueString($_POST['Update_name'], "text"),
+                       GetSQLValueString(isset($_POST['Gender']) ? "true" : "", "defined","'Y'","'N'"),
+                       GetSQLValueString($_POST['Update_date'], "date"),
+                       GetSQLValueString($_POST['Update_Email'], "text"),
+                       GetSQLValueString($_POST['UserIDHidded'], "text"));
 
   mysql_select_db($database_user_info, $user_info);
   $Result1 = mysql_query($insertSQL, $user_info) or die(mysql_error());
 
-  $insertGoTo = "InsertVehicleType.php";
+  $insertGoTo = "InsertDriverDetails.php";
   if (isset($_SERVER['QUERY_STRING'])) {
     $insertGoTo .= (strpos($insertGoTo, '?')) ? "&" : "?";
     $insertGoTo .= $_SERVER['QUERY_STRING'];
@@ -114,10 +115,10 @@ $row_user = mysql_fetch_assoc($user);
 $totalRows_user = mysql_num_rows($user);
 
 mysql_select_db($database_user_info, $user_info);
-$query_VehicleType = "SELECT * FROM vehicle_type";
-$VehicleType = mysql_query($query_VehicleType, $user_info) or die(mysql_error());
-$row_VehicleType = mysql_fetch_assoc($VehicleType);
-$totalRows_VehicleType = mysql_num_rows($VehicleType);
+$query_Driver_Insert = "SELECT * FROM driver_details";
+$Driver_Insert = mysql_query($query_Driver_Insert, $user_info) or die(mysql_error());
+$row_Driver_Insert = mysql_fetch_assoc($Driver_Insert);
+$totalRows_Driver_Insert = mysql_num_rows($Driver_Insert);
 ?>
 <?php
 if("" == ""){
@@ -131,14 +132,15 @@ if("" == ""){
 <head>
 <link href="CSS/layout.css" rel="stylesheet" type="text/css" />
 <link href="CSS/Menu.css" rel="stylesheet" type="text/css" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Insert Vehicle Type</title>
 <link href="SpryAssets/SpryValidationTextField.css" rel="stylesheet" type="text/css">
-<link href="SpryAssets/SpryValidationSelect.css" rel="stylesheet" type="text/css">
+<link href="SpryAssets/SpryValidationRadio.css" rel="stylesheet" type="text/css">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Insert Driver Details
+</title>
+<script src="SpryAssets/SpryValidationTextField.js" type="text/javascript"></script>
 <?php echo((isset($WA_custom_search_1))?$WA_custom_search_1->Head:"") ?>
 <script type="text/javascript" src="webassist/framework/javascript/ajax.js"></script>
-<script src="SpryAssets/SpryValidationTextField.js" type="text/javascript"></script>
-<script src="SpryAssets/SpryValidationSelect.js" type="text/javascript"></script>
+<script src="SpryAssets/SpryValidationRadio.js" type="text/javascript"></script>
 <script type="text/javascript">
 function framework_load_plugin_url(plugin,form,div,framework_path)  {
   document.MM_returnValue = false;
@@ -183,8 +185,9 @@ function framework_load_plugin_url(plugin,form,div,framework_path)  {
             <li><a href="InsertBillingDetails.php">Billing Details</a></li>
             </ul>
             </li>
-<li><a href="Logout.php">Logout</a></li></nav>
-            </div>
+<li><a href="Logout.php">Logout</a></li>
+</nav>
+  </div>
            
             
 <div id="Content">
@@ -198,89 +201,70 @@ function framework_load_plugin_url(plugin,form,div,framework_path)  {
   <form action="<?php echo $editFormAction; ?>" method="POST" name="UpdateForm" id="UpdateForm">
     <table width="600" border="0">
       <tr>
-        <td height="26">Account Info : <?php echo $row_user['FName']; ?>    User Name : <?php echo $row_user['user_id']; ?>
+        <td>Account Info : <?php echo $row_user['FName']; ?>   User Name : <?php echo $row_user['user_id']; ?>
           <table width="400" border="0" align="center">
-          <tr>            </tr>
-          </table></td>
+            <tr>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td><span id="sprytextfield1">
+                <label for="Update_name"></label>
+                Name : :
+                <br>
+                <span class="textfieldRequiredMsg">A value is required.</span></span>
+                <input name="Update_name" type="text" class="styleTxtField" id="Update_name" value=""></td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td><span id="spryradio1">
+                <label>
+                  Gender :<br>
+                  <input name="Gender" type="radio" id="Gender_0" value="radio">
+                  Male</label>
+                <br>
+                <label>
+                  <input name="Gender" type="radio" id="Gender_1" value="radio">
+                  Female</label>
+                <br>
+                <span class="radioRequiredMsg">Please make a selection.</span></span></td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td><span id="sprytextfield3"> Date :<br>
+                <input name="Update_date" type="text" class="styleTxtField" id="Update_date" value="">
+                <span class="textfieldRequiredMsg">A value is required.</span></span></td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td><span id="sprytextfield4"> Email :<br>
+                <input name="Update_Email" type="text" class="styleTxtField" id="Update_Email" value="">
+                <span class="textfieldRequiredMsg">A value is required.</span></span></td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td><span id="sprytextfield2">Address :<br>
+                <input name="text1" type="text" class="styleTxtField" id="text1" value="">
+                <span class="textfieldRequiredMsg">A value is required.</span></span></td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td><input type="submit" name="UpadateDate" id="UpadateDate" value="Insert">
+                <input name="UserIDHidded" type="hidden" id="UserIDHidded" value="<?php echo $row_user['cust_id']; ?>"></td>
+            </tr>
+      </table></td>
       </tr>
       <tr>
-        <td><table width="500" border="0" align="center">
-          <tr>
-            <td>&nbsp;</td>
-          </tr>
-          <tr>
-            <td><span id="sprytextfield1">
-              <label for="VehicleName"></label>
-Name of Vehicle : <br>
-              <input name="VehicleName" type="text" class="styleTxtField" id="VehicleName">
-              <span class="textfieldRequiredMsg">A value is required.</span></span></td>
-          </tr>
-          <tr>
-            <td>&nbsp;</td>
-          </tr>
-          <tr>
-            <td><span id="sprytextfield4">
-              <label for="Model"></label>
-Model No : <br>
-              <input name="Model" type="text" class="styleTxtField" id="Model">
-              <span class="textfieldRequiredMsg">A value is required.</span></span></td>
-          </tr>
-          <tr>
-            <td>&nbsp;</td>
-          </tr>
-          <tr>
-            <td><span id="sprytextfield2">
-              <label for="DepositMoney"></label>
-Deposit Money : <br>
-              <input name="DepositMoney" type="text" class="styleTxtField" id="DepositMoney">
-              <span class="textfieldRequiredMsg">A value is required.</span></span></td>
-          </tr>
-          <tr>
-            <td>&nbsp;</td>
-          </tr>
-          <tr>
-            <td><span id="sprytextfield3">
-              <label for="CostPerMile"></label>
-Cost Per Mile : <br>
-              <input name="CostPerMile" type="text" class="styleTxtField" id="CostPerMile">
-              <span class="textfieldRequiredMsg">A value is required.</span></span></td>
-          </tr>
-          <tr>
-            <td>&nbsp;</td>
-          </tr>
-          <tr>
-            <td><span id="spryselect2">
-              <label for="Avail"></label>
-              <select name="Avail" class="styleTxtField" id="Avail">
-                <option value="" <?php if (!(strcmp("", 1))) {echo "selected=\"selected\"";} ?>>Yes</option>
-                <option value="" <?php if (!(strcmp("", 1))) {echo "selected=\"selected\"";} ?>>No</option>
-                <?php
-do {  
-?>
-                <option value="<?php echo $row_VehicleType['availbility_vechicle']?>"<?php if (!(strcmp($row_VehicleType['availbility_vechicle'], 1))) {echo "selected=\"selected\"";} ?>><?php echo $row_VehicleType['availbility_vechicle']?></option>
-<?php
-} while ($row_VehicleType = mysql_fetch_assoc($VehicleType));
-  $rows = mysql_num_rows($VehicleType);
-  if($rows > 0) {
-      mysql_data_seek($VehicleType, 0);
-	  $row_VehicleType = mysql_fetch_assoc($VehicleType);
-  }
-?>
-              </select>
-              <span class="selectRequiredMsg">Please select an item.</span></span></td>
-          </tr>
-          <tr>
-            <td>&nbsp;</td>
-          </tr>
-          <tr>
-            <td><input type="submit" name="Add" id="Add" value="Add"></td>
-          </tr>
-          <tr>
-            <td><span id="spryselect1">
-              <label for="Avail"></label>
-              <span class="selectRequiredMsg">Please select an item.</span></span></td>
-          </tr>
-        </table></td>
+        <td>&nbsp;</td>
       </tr>
     </table>
     <input type="hidden" name="MM_insert" value="UpdateForm">
@@ -288,19 +272,25 @@ do {
 </div> 
 </div>
 <div id="Footer" ></div>
+
 </div>
 <script type="text/javascript">
 var sprytextfield1 = new Spry.Widget.ValidationTextField("sprytextfield1");
-var sprytextfield2 = new Spry.Widget.ValidationTextField("sprytextfield2");
+</script><div style="width: 100%;" id="cse">
+  <div class="gsc-control-cse gsc-control-cse-en">
+    <div class="gsc-control-wrapper-cse" dir="ltr"></div>
+  </div>
+</div>
+<script type="text/javascript">
 var sprytextfield3 = new Spry.Widget.ValidationTextField("sprytextfield3");
-var spryselect1 = new Spry.Widget.ValidationSelect("spryselect1");
-var spryselect2 = new Spry.Widget.ValidationSelect("spryselect2");
 var sprytextfield4 = new Spry.Widget.ValidationTextField("sprytextfield4");
+var sprytextfield2 = new Spry.Widget.ValidationTextField("sprytextfield2");
+var spryradio1 = new Spry.Widget.ValidationRadio("spryradio1");
 </script>
 </body>
 </html>
 <?php
 mysql_free_result($user);
 
-mysql_free_result($VehicleType);
+mysql_free_result($Driver_Insert);
 ?>

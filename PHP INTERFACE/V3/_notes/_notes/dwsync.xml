@@ -5,5 +5,7 @@
 <file name="Account.php.mno" server="C:/xampp/htdocs/Tutorial/" local="130812328693451117" remote="130812328690000000" Dst="0" />
 <file name="Register_user.php.mno" server="C:/xampp/htdocs/Tutorial/" local="130812587262798662" remote="130812587260000000" Dst="0" />
 <file name="UPdateVehicleType.php.mno" server="C:/xampp/htdocs/Tutorial/" local="130812597842980122" remote="130812597840000000" Dst="0" />
-<file name="InsertVehicleType.php.mno" server="C:/xampp/htdocs/Tutorial/" local="130812596490971645" remote="130812596490000000" Dst="0" />
+<file name="InsertVehicleType.php.mno" server="C:/xampp/htdocs/Tutorial/" local="130829419933368235" remote="130829419930000000" Dst="0" />
+<file name="InsertDriverDetails.php.mno" server="C:/xampp/htdocs/Tutorial/" local="130829379504538994" remote="130829379500000000" Dst="0" />
+<file name="InsertVehicleDetails.php.mno" server="C:/xampp/htdocs/Tutorial/" local="130829398992920293" remote="130829398990000000" Dst="0" />
 </dwsync>
