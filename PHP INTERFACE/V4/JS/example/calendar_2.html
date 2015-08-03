@@ -1,0 +1,42 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>calendar</title>
+<script type="text/javascript">
+function setText(ID, content)
+{
+	if(document.getElementById(ID).value != undefined)
+	{
+		document.getElementById(ID).value = content;
+	}
+	else
+	{
+		if(document.getElementById(ID).innerHTML != undefined)
+		{
+			document.getElementById(ID).innerHTML = content;
+		}
+	}
+}
+</script>
+</head>
+<body bgcolor="#ffffff">
+<!--url's used in the movie-->
+<!--text used in the movie-->
+<!--
+Month 
+YEAR
+-->
+<!-- saved from url=(0013)about:internet -->
+<p>
+Clicked:<input type="text" name="date" id="dateInputID"/>
+</p>
+<p>
+DateOver:<span id="dateSpanID"></span>
+</p>
+<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,0,0" width="200" height="200" id="calendar" align="middle">
+<param name="allowScriptAccess" value="sameDomain" />
+<param name="movie" value="calendar_2.swf" /><param name="quality" value="high" /><param name="bgcolor" value="#ffffff" /><embed src="calendar_2.swf" quality="high" bgcolor="#ffffff" width="200" height="200" name="calendar" align="middle" allowScriptAccess="sameDomain" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
+</object>
+
+</body>
+</html>
