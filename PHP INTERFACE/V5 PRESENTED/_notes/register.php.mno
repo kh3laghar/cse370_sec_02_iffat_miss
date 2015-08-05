@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_user" value="name:user_id;datatype:int,name:username;datatype:string,name:password;datatype:string,name:email;datatype:string" />
+	<infoitem key="UD_Rent_a_car" value="name:cust_id;datatype:int,name:user;datatype:string,name:password;datatype:string,name:name;datatype:string,name:gender;datatype:string,name:email_id;datatype:string,name:address_user;datatype:string" />
+	<infoitem key="UD_Recordset1" value="name:cust_id;datatype:int,name:name;datatype:string,name:user_id;datatype:string,name:password;datatype:string,name:email_id;datatype:string,name:re_enter_email;datatype:string,name:address_user;datatype:string" />
+	<infoitem key="UD_User_Information" value="name:cust_id;datatype:int,name:name;datatype:string,name:user_id;datatype:string,name:password;datatype:string,name:email_id;datatype:string,name:re_enter_email;datatype:string,name:address_user;datatype:string" />
+	<infoitem key="UD_User_information" value="name:cust_id;datatype:int,name:name;datatype:string,name:user_id;datatype:string,name:password;datatype:string,name:email_id;datatype:string,name:re_enter_email;datatype:string,name:address_user;datatype:string" />
+</info>

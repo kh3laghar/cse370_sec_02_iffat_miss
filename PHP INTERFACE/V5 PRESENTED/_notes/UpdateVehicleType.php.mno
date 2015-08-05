@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_user" value="name:cust_id;datatype:int,name:FName;datatype:string,name:LName;datatype:string,name:user_id;datatype:string,name:UserLevel;datatype:int,name:password;datatype:string,name:email_id;datatype:string,name:PhoneNo;datatype:string,name:address_user;datatype:string,name:timestamp;datatype:timestamp" />
+	<infoitem key="UD_VehicleType" value="name:vehicle_id;datatype:int,name:name;datatype:string,name:Model;datatype:string,name:Color;datatype:string,name:deposit;datatype:int,name:cost_per_mile;datatype:int,name:Seat Quantity;datatype:int,name:availbility_vechicle;datatype:string" />
+</info>

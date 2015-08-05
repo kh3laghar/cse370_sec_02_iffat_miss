@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_BillingInsert" value="name:bill_id;datatype:int,name:book_id;datatype:int,name:advance_amount;datatype:int,name:total_amount;datatype:int,name:bill_status;datatype:int,name:bill_date;datatype:timestamp" />
+	<infoitem key="UD_BillingDetails" value="name:bill_id;datatype:int,name:book_id;datatype:int,name:advance_amount;datatype:int,name:total_amount;datatype:int,name:bill_status;datatype:int,name:bill_date;datatype:timestamp" />
+	<infoitem key="UD_User" value="name:cust_id;datatype:int,name:FName;datatype:string,name:LName;datatype:string,name:user_id;datatype:string,name:UserLevel;datatype:int,name:password;datatype:string,name:email_id;datatype:string,name:PhoneNo;datatype:string,name:address_user;datatype:string,name:timestamp;datatype:timestamp" />
+	<infoitem key="UD_VehicleDetailsInsert" value="name:vehicle_id;datatype:int,name:vehicle_reg_no;datatype:int,name:vechicle_status;datatype:int" />
+</info>

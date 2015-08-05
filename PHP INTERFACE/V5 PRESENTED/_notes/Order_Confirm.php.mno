@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_Recordset1" value="name:vehicle_id;datatype:int,name:name;datatype:string,name:Model;datatype:string,name:Color;datatype:string,name:deposit;datatype:int,name:cost_per_mile;datatype:int,name:Seat Quantity;datatype:int,name:availbility_vechicle;datatype:int" />
+	<infoitem key="UD_Reserv" value="name:reservId;datatype:int,name:name;datatype:string,name:Gender;datatype:int,name:date;datatype:date,name:address;datatype:string,name:carModel;datatype:string,name:color;datatype:string,name:seat;datatype:int,name:Phone;datatype:int" />
+</info>
